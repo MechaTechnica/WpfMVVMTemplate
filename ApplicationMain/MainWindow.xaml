@@ -1,0 +1,200 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Views="clr-namespace:ApplicationUI.Views;assembly=ApplicationUI"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" x:Class="ApplicationMain.MainWindow"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        d:DesignWidth="1920" d:DesignHeight="1080"
+        Title="MainWindow"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <ControlTemplate x:Key="CaptionBtnCloseStyle" TargetType="{x:Type Button}">
+            <Grid x:Name="grid" ClipToBounds="True">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF2B2B2B" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed" />
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <!-- <Rectangle x:Name="rectangle" Fill="#FF323232" RadiusX="4" RadiusY="4" StrokeThickness="0" /> -->
+                <Border x:Name="border" CornerRadius="0,0,4,4" Background="Red" />
+                <Path Fill="#ff6c6d71" Data="F1 M 11.232,12.798 L 0.000,1.566 L 1.566,0.000 L 12.798,11.232 L 11.232,12.798 Z" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8" />
+                <Path Fill="#ff6c6d71" Data="F1 M 0.000,11.232 L 11.232,0.000 L 12.798,1.566 L 1.566,12.798 L 0.000,11.232 Z" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8" />
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="CaptionBtnMaximiseRestoreStyle" TargetType="{x:Type Button}">
+            <Grid Margin="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF2B2B2B" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed" />
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="border" Background="#FF2EFF00" CornerRadius="0,0,4,4" />
+                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8">
+                    <Path Fill="#ff6c6d71" Data="F1 M 9.000,10.000 L 2.000,10.000 L 2.000,5.000 L 9.000,5.000 L 9.000,10.000 Z M 8.612,3.000 L 2.161,3.000 L 0.000,3.000 L 0.000,5.771 L 0.000,9.892 L 0.000,12.000 L 2.161,12.000 L 8.612,12.000 L 11.000,12.000 L 11.000,9.892 L 11.000,5.771 L 11.000,3.000 L 8.612,3.000 Z" />
+                    <Path Fill="#ff6c6d71" Data="F1 M 12.874,0.000 L 6.423,0.000 L 4.000,0.000 L 4.000,2.326 L 4.000,5.000 L 6.000,5.000 L 6.000,2.000 L 13.000,2.000 L 13.000,7.000 L 9.000,7.000 L 9.000,9.000 L 12.874,9.000 L 15.000,9.000 L 15.000,6.611 L 15.000,2.326 L 15.000,0.000 L 12.874,0.000 Z" />
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="CaptionBtnMinimizeStyle" TargetType="{x:Type Button}">
+            <Grid Margin="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF2B2B2B" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed" />
+                        <VisualState x:Name="Disabled">
+                            <Storyboard>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF2B2B2B" />
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="border" CornerRadius="0,0,4,4" Background="#FFF3FF00" />
+                <Path Fill="#ff6c6d70" Data="F1 M 12.283,2.214 L 0.000,2.214 L 0.000,0.000 L 12.283,0.000 L 12.283,2.214 Z" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,8" />
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" />
+    </Window.Triggers>
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome GlassFrameThickness="0"
+                              ResizeBorderThickness="5"
+                              CornerRadius="0"
+                              CaptionHeight="30"
+                              NonClientFrameEdges="None"
+                              UseAeroCaptionButtons="False" />
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding
+                                         RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}},
+                                         Path=WindowState}"
+                                         Value="Maximized">
+                                            <Setter Property="BorderThickness" Value="8" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Grid>
+                                <AdornerDecorator>
+                                    <ContentPresenter />
+                                </AdornerDecorator>
+
+                                <DockPanel
+                                    VerticalAlignment="Top"
+                                    LastChildFill="False" Margin="0" Height="24" Background="{x:Null}">
+
+                                    <Button x:Name="btnClose"
+                                            Width="50"
+                                            Click="CloseClick"
+                                            Content="X"
+                                            DockPanel.Dock="Right"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Template="{DynamicResource CaptionBtnCloseStyle}"
+                                            Padding="0"
+                                            Margin="4,0,0,0"
+                                            BorderThickness="0"
+                                            ClipToBounds="True"
+                                            VerticalAlignment="Stretch" Panel.ZIndex="1">
+                                        <Button.LayoutTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="0.8" ScaleY="0.8" />
+                                                <SkewTransform />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button x:Name="btnRestore"
+                                            Width="50"
+                                            Click="MaximizeRestoreClick"
+                                            Content="#"
+                                            DockPanel.Dock="Right"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Template="{DynamicResource CaptionBtnMaximiseRestoreStyle}"
+                                            Margin="4,0,0,0"
+                                            ClipToBounds="True"
+                                            VerticalAlignment="Stretch" Panel.ZIndex="1">
+                                        <Button.LayoutTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="0.8" ScaleY="0.8" />
+                                                <SkewTransform />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Button x:Name="btnMinimize"
+                                            Width="50"
+                                            Click="MinimizeClick"
+                                            Content="_"
+                                            DockPanel.Dock="Right"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Template="{DynamicResource CaptionBtnMinimizeStyle}"
+                                            Padding="0"
+                                            Margin="4,0,0,0"
+                                            ClipToBounds="True"
+                                            VerticalAlignment="Stretch" Panel.ZIndex="1">
+                                        <Button.LayoutTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="0.8" ScaleY="0.8" />
+                                                <SkewTransform />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Button.LayoutTransform>
+                                    </Button>
+                                    <Border DockPanel.Dock="Right" Width="128" HorizontalAlignment="Right" Margin="0,0,-132,0" Background="{x:Null}" CornerRadius="0,0,4,4" />
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+    <AdornerDecorator>
+        <Views:MainPanelView/>
+    </AdornerDecorator>
+</Window>
